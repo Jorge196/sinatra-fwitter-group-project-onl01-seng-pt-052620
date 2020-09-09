@@ -29,7 +29,7 @@ class TweetsController < ApplicationController
 
     if logged_in? && !@tweet.content.blank? && @tweet.save
 
-      @tweet = Tweet.new(content: params)
+      @tweet = Tweet.new(content: params[:content], user: current_user)
 
       redirect to "/tweets/#{@tweet.id}"
 
