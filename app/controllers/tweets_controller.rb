@@ -28,7 +28,8 @@ class TweetsController < ApplicationController
     @user = current_user
 
     if logged_in? && !@tweet.content.blank? && @tweet.save
-      @user.tweets << @tweet
+
+      @tweet = Tweet.new(content: params)
 
       redirect to "/tweets/#{@tweet.id}"
 
@@ -59,6 +60,6 @@ class TweetsController < ApplicationController
       redirect to "/tweets/#{@tweet.id}/edit"
 
     end
-  end 
+  end
 
 end
